@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Consulta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/./css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/./css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="paginaInicial.html">Início</a>
+                    </li>
+                    <li>
+                        <a href="consulta.html">Consulta</a>
+                    </li>
+                    <li>
+                        <a href="add.html">Adicionar Deputado</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="card-group container-fluid row">
+        <select id="estados" class="custom-select col-lg-4">
+            <option disabled selected>ESTADO</option>
+        </select>
+        <select id="cidades" class="custom-select col-lg-4">
+            <option disabled selected>CIDADE</option>
+        </select>
+    </section>
+
+
+    <div id="Container">
+        <h1>Deputados</h1>
+        <hr/>
+
+        <h2>Pesquisar Deputado:</h2>
+        <div id="Pesquisar">
+            Infome o nome:
+            <input type="text" name="txtnome" id="txtnome" />
+            <input type="button" name="btnPesquisar" value="Pesquisar" />
+        </div>
+        <hr/>
+
+        <h2>Resultados da pesquisa:</h2>
+        <div id="Resultado"></div>
+        <hr>
+
+    </div>
+
+    <div id="listThiefs">
+        <table id="tableOfThiefs">
+            <td>
+                <tr>Nome</tr>
+                <tr>Sexo</tr>
+                <tr>Data de Nasc.</tr>
+                <tr>Rua</tr>
+                <tr>Num</tr>
+                <tr>Cidade</tr>
+                <tr>Estado</tr>
+                <tr>CPF</tr>
+                <tr>Cadjus</tr>
+                <tr>Email</tr>
+                <tr>Senha</tr>
+            </td>
+        </table>
+    </div>
+
+
+    <script src="/./scripts/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/./scripts/bootstrap/bootstrap.js"></script>
+    <script src="/./scripts/script.js"></script>
+</body>
+
+</html>
