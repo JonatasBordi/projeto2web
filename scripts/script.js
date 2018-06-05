@@ -139,7 +139,7 @@ function getListOfThiefs() {
             if (xmlreq.status == 200) {
 
                 var json = $.parseJSON(xmlreq.responseText);
-                var tabela = document.getElementById("tableOfThiefs");
+                var tabela = document.getElementById("tabelaConsulta");
                 for (let index = 0; index < json.length; index++) {
                     var linhaNova = document.createElement("tr");
                     var name = document.createElement("td");
@@ -200,7 +200,7 @@ function addToList() {
 
     // Declaração de Variáveis
     var xmlreq = CriaRequest();
-    var name = "nome=" + $("#name").val();
+    var name = "&nome=" + $("#name").val();
     var sex = "&sexo=" + $("#sexo").val();
     var date = "&dataNasc=" + $("#data").val();
     var street = "&rua=" + $("#rua").val();
