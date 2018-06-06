@@ -161,8 +161,8 @@ function buscarEstados() {
             $("#estados").html(option);
 
             // habilita o select cidades
-            $("#estados").removeAttr('disabled');
-            $("#cidades").removeAttr('disabled');
+            $("#estadosConsulta").removeAttr('disabled');
+            $("#cidadesConsulta").removeAttr('disabled');
         }
     }
 }
