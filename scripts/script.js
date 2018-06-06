@@ -14,117 +14,16 @@ $(document).ready(function () {
 
     //depois daqui é o ajax de consulta
 
-    $("#btnPesquisar").click(getListOfThiefs());
+    $("#btnPesquisar").click(function (event) {
+        getListOfThiefs();
+    });
 
-    $("#incluirCandidato").click(addToList());
-
-/**
-    * Função para consultar os dados
-    */
-   function getListOfThiefs() {
-
-        // Declaração de Variáveis
-        var xmlreq = CriaRequest();
-
-        // Iniciar uma requisição
-        xmlreq.open("GET", "http://andrebordignon.esy.es/php/consultacandidatos.php", true);
-
-        // Atribui uma função para ser executada sempre que houver uma mudança de ado
-        xmlreq.onreadystatechange = function () {
-
-            // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
-            if (xmlreq.readyState == 4) {
-
-                // Verifica se o arquivo foi encontrado com sucesso
-                if (xmlreq.status == 200) {
-
-                    var json = $.parseJSON(xmlreq.responseText);
-                    var tabela = document.getElementById("tabelaConsulta");
-                    for (let index = 0; index < json.length; index++) {
-                        var linhaNova = document.createElement("tr");
-                        var name = document.createElement("td");
-                        var sex = document.createElement("td");
-                        var date = document.createElement("td");
-                        var street = document.createElement("td");
-                        var number = document.createElement("td");
-                        var city = document.createElement("td");
-                        var state = document.createElement("td");
-                        var cpf = document.createElement("td");
-                        var cadjus = document.createElement("td");
-                        var email = document.createElement("td");
-                        var password = document.createElement("td");
-
-                        if (json[index].nome.length > 0) {
-                            name.appendChild(document.createTextNode(json[index].nome));
-                            sex.appendChild(document.createTextNode(json[index].sexo));
-                            date.appendChild(document.createTextNode(json[index].datanasc));
-                            street.appendChild(document.createTextNode(json[index].rua));
-                            number.appendChild(document.createTextNode(json[index].numero));
-                            city.appendChild(document.createTextNode(json[index].cidade));
-                            state.appendChild(document.createTextNode(json[index].estado));
-                            cpf.appendChild(document.createTextNode(json[index].cpf));
-                            cadjus.appendChild(document.createTextNode(json[index].cadjus));
-                            email.appendChild(document.createTextNode(json[index].email));
-                            password.appendChild(document.createTextNode(json[index].senha));
-
-                            linhaNova.appendChild(name);
-                            linhaNova.appendChild(sex);
-                            linhaNova.appendChild(date);
-                            linhaNova.appendChild(street);
-                            linhaNova.appendChild(number);
-                            linhaNova.appendChild(city);
-                            linhaNova.appendChild(state);
-                            linhaNova.appendChild(cpf);
-                            linhaNova.appendChild(cadjus);
-                            linhaNova.appendChild(email);
-                            linhaNova.appendChild(password);
-
-                            tabela.appendChild(linhaNova);
-                        }
-
-
-
-
-                    }
-                    result.innerHTML = xmlreq.responseText;
-                } else {
-                    result.innerHTML = "Erro: " + xmlreq.statusText;
-                }
-            }
-        };
-        xmlreq.send(null);
-    }
+    $("#incluirCandidato").click(function (event) {
+        addToList();
+    }); 
 
 
 });
-
-
-    /**
-  * Função para criar um objeto XMLHTTPRequest
-  */
- function CriaRequest() {
-    try {
-        request = new XMLHttpRequest();
-    } catch (IEAtual) {
-
-        try {
-            request = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (IEAntigo) {
-
-            try {
-                request = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (falha) {
-                request = false;
-            }
-        }
-    }
-
-    if (!request)
-        alert("Seu Navegador não suporta Ajax!");
-    else
-        return request;
-}
-
 
 
 // Função para buscar os estados
@@ -198,8 +97,10 @@ function buscarCidades() {
 
 function addToList() {
 
-    // Declaração de Variáveis
-    var xmlreq = CriaRequest();
+    var xmlreq = new XMLHttpRequest();
+    var tipo = 'GET';
+    var assincrona = true;
+    
     var name = "nome=" + $("#nomeAdd").val();
     var sex = "&sexo=" + $("#sexoAdd").val();
     var date = "&dataNasc=" + $("#dataAdd").val();
@@ -212,18 +113,96 @@ function addToList() {
     var cadjus = "&cadjus=" + $("#cadjusAdd").val();
     var email = "&email=" + $("#emailAdd").val();
     var password = "&senha=" + $("#senhaAdd").val();
-
+    alert( $("#nomeAdd").val());
 
     // Iniciar uma requisição
-    xmlreq.open("GET", "http://andrebordignon.esy.es/php/incluicandidato.php?" + name + sex + date + street + number + bairro + state + city + cpf + cadjus + email + password, true);
-    xmlreq.send(null);
+    xmlreq.open(tipo, "http://andrebordignon.esy.es/php/incluicandidato.php?" + name + sex + date + street + number + bairro + state + city + cpf + cadjus + email + password, true);
+    xmlreq.send();
     xmlreq.onreadystatechange = function () {
         if (xmlreq.readyState == 4 && xmlreq.status == 200) {
             var resposta = xmlreq.responseText;
-            alert(resposta);
         }
 
         var resposta2 = xmlreq.responseText;
-            alert(" teste" + resposta2);
     }
+}
+
+
+/**
+    * Função para consultar os dados
+    */
+   function getListOfThiefs() {
+
+
+    var xmlreq = new XMLHttpRequest();
+    var tipo = 'GET';
+    var assincrona = true;
+
+    // Iniciar uma requisição
+    xmlreq.open(tipo, "http://andrebordignon.esy.es/php/consultacandidatos.php", true);
+
+    // Atribui uma função para ser executada sempre que houver uma mudança de ado
+    xmlreq.onreadystatechange = function () {
+
+        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+        if (xmlreq.readyState == 4) {
+
+            // Verifica se o arquivo foi encontrado com sucesso
+            if (xmlreq.status == 200) {
+
+                var json = $.parseJSON(xmlreq.responseText);
+                var tabela = document.getElementById("tabelaConsulta");
+                for (let index = 0; index < json.length; index++) {
+                    var linhaNova = document.createElement("tr");
+                    var name = document.createElement("td");
+                    var sex = document.createElement("td");
+                    var date = document.createElement("td");
+                    var street = document.createElement("td");
+                    var number = document.createElement("td");
+                    var city = document.createElement("td");
+                    var state = document.createElement("td");
+                    var cpf = document.createElement("td");
+                    var cadjus = document.createElement("td");
+                    var email = document.createElement("td");
+                    var password = document.createElement("td");
+
+                    if (json[index].nome.length > 0) {
+                        name.appendChild(document.createTextNode(json[index].nome));
+                        sex.appendChild(document.createTextNode(json[index].sexo));
+                        date.appendChild(document.createTextNode(json[index].datanasc));
+                        street.appendChild(document.createTextNode(json[index].rua));
+                        number.appendChild(document.createTextNode(json[index].numero));
+                        city.appendChild(document.createTextNode(json[index].cidade));
+                        state.appendChild(document.createTextNode(json[index].estado));
+                        cpf.appendChild(document.createTextNode(json[index].cpf));
+                        cadjus.appendChild(document.createTextNode(json[index].cadjus));
+                        email.appendChild(document.createTextNode(json[index].email));
+                        password.appendChild(document.createTextNode(json[index].senha));
+
+                        linhaNova.appendChild(name);
+                        linhaNova.appendChild(sex);
+                        linhaNova.appendChild(date);
+                        linhaNova.appendChild(street);
+                        linhaNova.appendChild(number);
+                        linhaNova.appendChild(city);
+                        linhaNova.appendChild(state);
+                        linhaNova.appendChild(cpf);
+                        linhaNova.appendChild(cadjus);
+                        linhaNova.appendChild(email);
+                        linhaNova.appendChild(password);
+
+                        tabela.appendChild(linhaNova);
+                    }
+
+
+
+
+                }
+                result.innerHTML = xmlreq.responseText;
+            } else {
+                result.innerHTML = "Erro: " + xmlreq.statusText;
+            }
+        }
+    };
+    xmlreq.send(null);
 }
