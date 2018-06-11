@@ -5,22 +5,19 @@
     <meta charset="utf-8" />
     <title>Adicionar Deputado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <span class="sr-only">Menu</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbarDiv">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="paginaInicial.html">Início</a>
@@ -43,65 +40,69 @@
 
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="campo1">Nome</label>
-                    <input type="text" class="form-control" id="campo1">
+                    <label for="nomeAdd">Nome</label>
+                    <input type="text" class="form-control" id="nomeAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo2">Sexo</label>
-                    <input type="text" class="form-control" id="campo2">
+                    <label for="sexoAdd">Sexo</label>
+                    <input type="text" class="form-control" id="sexoAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo3">Data de Nascimento</label>
-                    <input type="text" class="form-control" id="campo3">
+                    <label for="dataNascAdd">Data de Nascimento</label>
+                    <input type="text" class="form-control" id="dataNascAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo4">Rua</label>
-                    <input type="text" class="form-control" id="campo4">
+                    <label for="ruaAdd">Rua</label>
+                    <input type="text" class="form-control" id="ruaAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo5">Numero</label>
-                    <input type="text" class="form-control" id="campo5">
+                    <label for="numeroAdd">Numero</label>
+                    <input type="text" class="form-control" id="numeroAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo6">Cidade</label>
-                    <input type="text" class="form-control" id="campo6">
+                    <label for="cidadeAdd">Cidade</label>
+                    <select id="cidadeAdd" class="form-control">
+                        <option disabled selected>Selecione</option>
+                    </select>
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo7">Estado</label>
-                    <input type="text" class="form-control" id="campo7">
+                    <label for="estadoAdd">Estado</label>
+                    <select id="estadoAdd" class="form-control">
+                        <option disabled selected>Selecione</option>
+                    </select>
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo8">CPF</label>
-                    <input type="text" class="form-control" id="campo8">
+                    <label for="cpfAdd">CPF</label>
+                    <input type="text" class="form-control" id="cpfAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo9">Cadjus</label>
-                    <input type="text" class="form-control" id="campo9">
+                    <label for="cadjusAdd">Cadjus</label>
+                    <input type="text" class="form-control" id="cadjusAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo10">Email</label>
-                    <input type="text" class="form-control" id="campo10">
+                    <label for="emailAdd">Email</label>
+                    <input type="text" class="form-control" id="emailAdd">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="campo11">Senha</label>
-                    <input type="text" class="form-control" id="campo11">
+                    <label for="senhaAdd">Senha</label>
+                    <input type="text" class="form-control" id="senhaAdd">
                 </div>
             </div>
             <hr />
 
             <div id="actions" class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-primary" id="incluirCandidato">Salvar</button>
                     <a href="add.html" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
@@ -109,9 +110,9 @@
 
 
     </div>
-    <script src="/./scripts/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/./scripts/bootstrap/bootstrap.js"></script>
-    <script src="/./scripts/script.js"></script>
+    <script src="scripts/jquery/jquery-3.3.1.min.js"></script>
+    <script src="scripts/bootstrap/bootstrap.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>

@@ -14,39 +14,16 @@ $(document).ready(function () {
 
     //depois daqui é o ajax de consulta
 
-    /**
-  * Função para criar um objeto XMLHTTPRequest
-  */
-    function CriaRequest() {
-        try {
-            request = new XMLHttpRequest();
-        } catch (IEAtual) {
+    $("#btnPesquisar").click(function (event) {
+        getListOfThiefs();
+    });
 
-            try {
-                request = new ActiveXObject("Msxml2.XMLHTTP");
-            } catch (IEAntigo) {
-
-                try {
-                    request = new ActiveXObject("Microsoft.XMLHTTP");
-                } catch (falha) {
-                    request = false;
-                }
-            }
-        }
-
-        if (!request)
-            alert("Seu Navegador não suporta Ajax!");
-        else
-            return request;
-    }
-
-    $(".btnPesquisar").onclick(getListOfThiefs());
-
-    $("#incluirCandidato").onclick(addToList());
+    $("#incluirCandidato").click(function (event) {
+        addToList();
+    }); 
 
 
 });
-
 
 
 // Função para buscar os estados
@@ -83,8 +60,8 @@ function buscarEstados() {
             $("#estados").html(option);
 
             // habilita o select cidades
-            $("#estados").removeAttr('disabled');
-            $("#cidades").removeAttr('disabled');
+            $("#estadosConsulta").removeAttr('disabled');
+            $("#cidadesConsulta").removeAttr('disabled');
         }
     }
 }
@@ -118,16 +95,51 @@ function buscarCidades() {
 }
 
 
+function addToList() {
+
+    var xmlreq = new XMLHttpRequest();
+    var tipo = 'GET';
+    var assincrona = true;
+    
+    var name = "nome=" + $("#nomeAdd").val();
+    var sex = "&sexo=" + $("#sexoAdd").val();
+    var date = "&dataNasc=" + $("#dataAdd").val();
+    var street = "&rua=" + $("#ruaAdd").val();
+    var number = "&numero=" + $("#numAdd").val();
+    var bairro = "&bairro=" + $("#bairroAdd").val();
+    var city = "&cidade=" + $("#cidadeAdd").val();
+    var state = "&estado=" + $("#estadoAdd").val();
+    var cpf = "&cpf=" + $("#cpfAdd").val();
+    var cadjus = "&cadjus=" + $("#cadjusAdd").val();
+    var email = "&email=" + $("#emailAdd").val();
+    var password = "&senha=" + $("#senhaAdd").val();
+    alert( $("#nomeAdd").val());
+
+    // Iniciar uma requisição
+    xmlreq.open(tipo, "http://andrebordignon.esy.es/php/incluicandidato.php?" + name + sex + date + street + number + bairro + state + city + cpf + cadjus + email + password, true);
+    xmlreq.send();
+    xmlreq.onreadystatechange = function () {
+        if (xmlreq.readyState == 4 && xmlreq.status == 200) {
+            var resposta = xmlreq.responseText;
+        }
+
+        var resposta2 = xmlreq.responseText;
+    }
+}
+
+
 /**
     * Função para consultar os dados
     */
-function getListOfThiefs() {
+   function getListOfThiefs() {
 
-    // Declaração de Variáveis
-    var xmlreq = CriaRequest();
+
+    var xmlreq = new XMLHttpRequest();
+    var tipo = 'GET';
+    var assincrona = true;
 
     // Iniciar uma requisição
-    xmlreq.open("GET", "http://andrebordignon.esy.es/php/consultacandidatos.php", true);
+    xmlreq.open(tipo, "http://andrebordignon.esy.es/php/consultacandidatos.php", true);
 
     // Atribui uma função para ser executada sempre que houver uma mudança de ado
     xmlreq.onreadystatechange = function () {
@@ -139,7 +151,7 @@ function getListOfThiefs() {
             if (xmlreq.status == 200) {
 
                 var json = $.parseJSON(xmlreq.responseText);
-                var tabela = document.getElementById("tableOfThiefs");
+                var tabela = document.getElementById("tabelaConsulta");
                 for (let index = 0; index < json.length; index++) {
                     var linhaNova = document.createElement("tr");
                     var name = document.createElement("td");
@@ -193,34 +205,4 @@ function getListOfThiefs() {
         }
     };
     xmlreq.send(null);
-}
-
-
-function addToList() {
-
-    // Declaração de Variáveis
-    var xmlreq = CriaRequest();
-    var name = "nome=" + $("#name").val();
-    var sex = "&sexo=" + $("#sexo").val();
-    var date = "&dataNasc=" + $("#data").val();
-    var street = "&rua=" + $("#rua").val();
-    var number = "&numero=" + $("#num").val();
-    var bairro = "&bairro=" + $("#bairro").val();
-    var city = "&cidade=" + $("#cidade").val();
-    var state = "&estado=" + $("#estado").val();
-    var cpf = "&cpf=" + $("#cpf").val();
-    var cadjus = "&cadjus=" + $("#cadjus").val();
-    var email = "&email=" + $("#email").val();
-    var password = "&senha=" + $("#senha").val();
-
-
-    // Iniciar uma requisição
-    xmlreq.open("POST", "http://andrebordignon.esy.es/php/incluicandidato.php?" + name + sexo + date + street + number + bairro + state + city + cpf + cadjus + email + password, true);
-
-    xmlreq.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var resposta = xmlreq.responseText;
-            alert(resposta);
-        }
-    }
 }
