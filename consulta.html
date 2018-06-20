@@ -39,45 +39,37 @@
         <h1>Deputados</h1>
         <hr/>
 
-        <h2>Pesquisar Deputado:</h2>
-
-        <section id="cidadeEstado" class="card-group container-fluid row">
-            <select id="estadosConsulta" class="custom-select col-lg-4">
-                <option disabled selected>ESTADO</option>
-            </select>
-            <select id="cidadesConsulta" class="custom-select col-lg-4">
-                <option disabled selected>CIDADE</option>
-            </select>
-        </section>
-
-        <div id="Pesquisar">
-            Informe o nome:
-            <input type="text" name="txtnome" id="txtnome" />
-            <input id="btnPesquisar" class="btn btn-info" type="button" name="btnPesquisar" value="Pesquisar" />
+        <h2>Deletar Deputado:</h2>
+        <div id="remove">
+            Informe o id:
+            <input type="text" name="txtid" id="txtid" />
+            <input id="btnRemover" type="button" name="btnRemover" value="Remover" />
         </div>
+        <hr/>
+
+        <h2>Todos Deputados:</h2>
         <hr/>
 
     <div id="main" class="container-fluid">
 
-        <div id="listThiefs">
-            <table id="tabelaConsulta">
-                <tr>
-                    <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>Data de Nasc.</th>
-                    <th>Rua</th>
-                    <th>Num</th>
-                    <th>Cidade</th>
-                    <th>Estado</th>
-                    <th>CPF</th>
-                    <th>Cadjus</th>
-                    <th>Email</th>
-                    <th>Senha</th>
-                </tr>
-            </table>
-        </div>
+    <div id="listThiefs">
+        <table id="tabelaConsulta" class="table table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Data de Nasc.</th>
+                <th scope="col">Rua</th>
+                <th scope="col">Num</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Cadjus</th>
+                <th scope="col">Email</th>
+                <th scope="col">Senha</th>
+            </tr>
+        </table>
     </div>
-
     <!-- Footer -->
     <footer id="footer" class="page-footer font-small blue pt-4 mt-4">
 
