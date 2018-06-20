@@ -13,55 +13,35 @@
 <body>
 
     <!--NavBar-->
-    <nav class="navbar">
+    <nav class="page-header">
         <div class="container-fluid">
             <div class="navbar-header">
                 <span class="sr-only">Menu</span>
             </div>
             <div id="navbar" class="navbarDiv">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
+                <tr class="nav navbar-nav navbar-right">
+                    <td>
                         <a href="paginaInicial.html">Início</a>
-                    </li>
-                    <li>
+                    </td>
+                    <td>
                         <a href="consulta.html">Consulta</a>
-                    </li>
-                    <li>
+                    </td>
+                    <td>
                         <a href="add.html">Adicionar Deputado</a>
-                    </li>
-                </ul>
+                    </td>
+                </tr>
             </div>
         </div>
     </nav>
 
-<<<<<<< HEAD
     <!--Body-->
-=======
-    <section class="card-group container-fluid row">
-        <select id="estadosConsulta" class="custom-select col-lg-4">
-            <option disabled selected>ESTADO</option>
-        </select>
-        <select id="cidadesConsulta" class="custom-select col-lg-4">
-            <option disabled selected>CIDADE</option>
-        </select>
-    </section>
-
-
     <div id="Container">
         <h1>Deputados</h1>
         <hr/>
 
         <h2>Pesquisar Deputado:</h2>
-        <div id="Pesquisar">
-            Informe o nome:
-            <input type="text" name="txtnome" id="txtnome" />
-            <input id="btnPesquisar" type="button" name="btnPesquisar" value="Pesquisar" />
-        </div>
-        <hr/>
->>>>>>> 221cf8fdd2c292472083be319361e8cdb09fbd71
 
-    <div id="main" class="container-fluid">
-        <section class="card-group container-fluid row">
+        <section id="cidadeEstado" class="card-group container-fluid row">
             <select id="estadosConsulta" class="custom-select col-lg-4">
                 <option disabled selected>ESTADO</option>
             </select>
@@ -70,24 +50,14 @@
             </select>
         </section>
 
-
-        <div id="Container">
-            <h1>Deputados</h1>
-            <hr/>
-
-            <h2>Pesquisar Deputado:</h2>
-            <div id="Pesquisar">
-                Informe o nome:
-                <input type="text" name="txtnome" id="txtnome" />
-                <input type="button" name="btnPesquisar" value="Pesquisar" />
-            </div>
-            <hr/>
-
-            <h2>Resultados da pesquisa:</h2>
-            <div id="Resultado"></div>
-            <hr>
-
+        <div id="Pesquisar">
+            Informe o nome:
+            <input type="text" name="txtnome" id="txtnome" />
+            <input id="btnPesquisar" class="btn btn-info" type="button" name="btnPesquisar" value="Pesquisar" />
         </div>
+        <hr/>
+
+    <div id="main" class="container-fluid">
 
         <div id="listThiefs">
             <table id="tabelaConsulta">
@@ -109,7 +79,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4 mt-4">
+    <footer id="footer" class="page-footer font-small blue pt-4 mt-4">
 
 
         <div class="container-fluid text-center text-md-left">
