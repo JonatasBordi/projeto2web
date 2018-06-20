@@ -1,9 +1,5 @@
 $(document).ready(function () {
 
-    // desabilita o select cidades e estados enquanto não forem populados
-    $("#cidades").attr("disabled", "disable");
-    $("#estados").attr("disabled", "disable");
-
     // efetua a busca de estados da federação
     buscarEstados();
 
@@ -22,7 +18,6 @@ $(document).ready(function () {
     $("#incluirCandidato").click(function (event) {
         addToList();
     }); 
-
 
 });
 
@@ -74,7 +69,7 @@ function buscarCidades() {
     var tipo = 'GET';
     var assincrona = true;
     var idEstado = $('#estadoAdd').find(':selected').attr('value');
-console.log(idEstado);
+
     // API do IBGE que retorna todos os municipios relacionados com o id do estado
     requisicaoCidades.open(tipo, 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/' + idEstado + '/municipios', assincrona);
     requisicaoCidades.send();
