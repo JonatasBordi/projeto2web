@@ -5,7 +5,7 @@ html, body{
     box-sizing: border-box;
 }
 
-.page-header{
+header{
 	position:relative;
 	height: 10%;
 	width: 100%;
@@ -14,6 +14,9 @@ html, body{
 	padding: 20px;
 }
 
+a{
+	color: black;
+}
 
 #main{
 	display:block;
