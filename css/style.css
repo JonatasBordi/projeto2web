@@ -1,0 +1,16 @@
+header{
+	position:relative;
+	height: 10%;
+	width: 100%;
+	display: block;
+	margin: 20px;
+	padding: 20px;
+}
+
+.footer{
+	display: block;
+	position: relative;
+	text-align: center;
+	font-family: arial;
+    background-color: aliceblue;
+}
