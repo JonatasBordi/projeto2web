@@ -8,7 +8,7 @@ $(document).ready(function () {
     buscarEstados();
 
     // quando houver uma mudança no select de estados...
-    $('#estados').change(function (event) {
+    $('#estadoAdd').change(function (event) {
         buscarCidades();
     });
 
@@ -58,7 +58,7 @@ function buscarEstados() {
             }
 
             // acrescenta em html as tags <option>
-            $("#estados").html(option);
+            $("#estadoAdd").html(option);
 
             // habilita o select cidades
             $("#estadosConsulta").removeAttr('disabled');
@@ -73,8 +73,8 @@ function buscarCidades() {
     var requisicaoCidades = new XMLHttpRequest();
     var tipo = 'GET';
     var assincrona = true;
-    var idEstado = $('#estados').find(':selected').attr('value');
-
+    var idEstado = $('#estadoAdd').find(':selected').attr('value');
+console.log(idEstado);
     // API do IBGE que retorna todos os municipios relacionados com o id do estado
     requisicaoCidades.open(tipo, 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/' + idEstado + '/municipios', assincrona);
     requisicaoCidades.send();
@@ -90,7 +90,7 @@ function buscarCidades() {
             }
 
             // acrescenta em html as tags <option>
-            $("#cidades").html(option);
+            $("#cidadeAdd").html(option);
         }
     }
 }
