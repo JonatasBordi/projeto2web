@@ -13,9 +13,10 @@ $(document).ready(function () {
     });
 
     //depois daqui é o ajax de consulta
-
-    $("#btnPesquisar").click(function (event) {
-        getListOfThiefs();
+    getListOfThiefs();
+    
+    $("#btnRemover").click(function (event) {
+        removeFromList();
     });
 
     $("#incluirCandidato").click(function (event) {
@@ -128,6 +129,28 @@ function addToList() {
 }
 
 
+function removeFromList() {
+
+    var xmlreq = new XMLHttpRequest();
+    var tipo = 'GET';
+    
+    var idCandidato = "idcandidato=" + $("#txtid").val();
+    
+    // Iniciar uma requisição
+    xmlreq.open(tipo, "http://andrebordignon.esy.es/php/deletacandidato.php?" + idCandidato, true);
+    xmlreq.send();
+    xmlreq.onreadystatechange = function () {
+        if (xmlreq.readyState == 4 && xmlreq.status == 200) {
+            var resposta = xmlreq.responseText;
+            
+            if (resposta.includes("Registro alterado com sucesso.")) {  
+                location.reload();
+            }
+        }
+
+    }
+}
+
 /**
     * Função para consultar os dados
     */
@@ -154,6 +177,7 @@ function addToList() {
                 var tabela = document.getElementById("tabelaConsulta");
                 for (let index = 0; index < json.length; index++) {
                     var linhaNova = document.createElement("tr");
+                    var idCandidato = document.createElement("td");
                     var name = document.createElement("td");
                     var sex = document.createElement("td");
                     var date = document.createElement("td");
@@ -167,6 +191,7 @@ function addToList() {
                     var password = document.createElement("td");
 
                     if (json[index].nome.length > 0) {
+                        idCandidato.appendChild(document.createTextNode(json[index].idcandidato));
                         name.appendChild(document.createTextNode(json[index].nome));
                         sex.appendChild(document.createTextNode(json[index].sexo));
                         date.appendChild(document.createTextNode(json[index].datanasc));
@@ -178,7 +203,8 @@ function addToList() {
                         cadjus.appendChild(document.createTextNode(json[index].cadjus));
                         email.appendChild(document.createTextNode(json[index].email));
                         password.appendChild(document.createTextNode(json[index].senha));
-
+                    
+                        linhaNova.appendChild(idCandidato);
                         linhaNova.appendChild(name);
                         linhaNova.appendChild(sex);
                         linhaNova.appendChild(date);
@@ -198,7 +224,6 @@ function addToList() {
 
 
                 }
-                result.innerHTML = xmlreq.responseText;
             } else {
                 result.innerHTML = "Erro: " + xmlreq.statusText;
             }
