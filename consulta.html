@@ -11,73 +11,110 @@
 </head>
 
 <body>
-    <nav class="navbar">
+
+    <!--NavBar-->
+    <nav class="page-header">
         <div class="container-fluid">
             <div class="navbar-header">
                 <span class="sr-only">Menu</span>
             </div>
             <div id="navbar" class="navbarDiv">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
+                <tr class="nav navbar-nav navbar-right">
+                    <td>
                         <a href="paginaInicial.html">Início</a>
-                    </li>
-                    <li>
+                    </td>
+                    <td>
                         <a href="consulta.html">Consulta</a>
-                    </li>
-                    <li>
+                    </td>
+                    <td>
                         <a href="add.html">Adicionar Deputado</a>
-                    </li>
-                </ul>
+                    </td>
+                </tr>
             </div>
         </div>
     </nav>
 
-    <section class="card-group container-fluid row">
-        <select id="estadosConsulta" class="custom-select col-lg-4">
-            <option disabled selected>ESTADO</option>
-        </select>
-        <select id="cidadesConsulta" class="custom-select col-lg-4">
-            <option disabled selected>CIDADE</option>
-        </select>
-    </section>
-
-
+    <!--Body-->
     <div id="Container">
         <h1>Deputados</h1>
         <hr/>
 
         <h2>Pesquisar Deputado:</h2>
+
+        <section id="cidadeEstado" class="card-group container-fluid row">
+            <select id="estadosConsulta" class="custom-select col-lg-4">
+                <option disabled selected>ESTADO</option>
+            </select>
+            <select id="cidadesConsulta" class="custom-select col-lg-4">
+                <option disabled selected>CIDADE</option>
+            </select>
+        </section>
+
         <div id="Pesquisar">
             Informe o nome:
             <input type="text" name="txtnome" id="txtnome" />
-            <input id="btnPesquisar" type="button" name="btnPesquisar" value="Pesquisar" />
+            <input id="btnPesquisar" class="btn btn-info" type="button" name="btnPesquisar" value="Pesquisar" />
         </div>
         <hr/>
 
-        <h2>Resultados da pesquisa:</h2>
-        <div id="Resultado"></div>
-        <hr>
+    <div id="main" class="container-fluid">
 
+        <div id="listThiefs">
+            <table id="tabelaConsulta">
+                <tr>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Data de Nasc.</th>
+                    <th>Rua</th>
+                    <th>Num</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CPF</th>
+                    <th>Cadjus</th>
+                    <th>Email</th>
+                    <th>Senha</th>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div id="listThiefs">
-        <table id="tabelaConsulta">
-            <tr>
-                <th>Nome</th>
-                <th>Sexo</th>
-                <th>Data de Nasc.</th>
-                <th>Rua</th>
-                <th>Num</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>CPF</th>
-                <th>Cadjus</th>
-                <th>Email</th>
-                <th>Senha</th>
-            </tr>
-        </table>
-    </div>
+    <!-- Footer -->
+    <footer id="footer" class="page-footer font-small blue pt-4 mt-4">
 
+
+        <div class="container-fluid text-center text-md-left">
+
+
+            <div class="row">
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Link</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="http://www.tse.jus.br/">Tribunal Superior Eleitoral</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 
     <script src="scripts/jquery/jquery-3.3.1.min.js"></script>
     <script src="scripts/bootstrap/bootstrap.js"></script>

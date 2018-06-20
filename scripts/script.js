@@ -113,7 +113,11 @@ function addToList() {
     var cadjus = "&cadjus=" + $("#cadjusAdd").val();
     var email = "&email=" + $("#emailAdd").val();
     var password = "&senha=" + $("#senhaAdd").val();
+<<<<<<< HEAD
+    alert($("name").val());
+=======
     alert( $("#nomeAdd").val());
+>>>>>>> 221cf8fdd2c292472083be319361e8cdb09fbd71
 
     // Iniciar uma requisição
     xmlreq.open(tipo, "http://andrebordignon.esy.es/php/incluicandidato.php?" + name + sex + date + street + number + bairro + state + city + cpf + cadjus + email + password, true);
@@ -121,9 +125,17 @@ function addToList() {
     xmlreq.onreadystatechange = function () {
         if (xmlreq.readyState == 4 && xmlreq.status == 200) {
             var resposta = xmlreq.responseText;
+<<<<<<< HEAD
+            
         }
 
         var resposta2 = xmlreq.responseText;
+            
+=======
+        }
+
+        var resposta2 = xmlreq.responseText;
+>>>>>>> 221cf8fdd2c292472083be319361e8cdb09fbd71
     }
 }
 
